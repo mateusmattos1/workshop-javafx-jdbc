@@ -23,6 +23,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -30,7 +31,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import model.entities.Department;
 import model.entities.Seller;
+import model.services.DepartmentService;
 import model.services.SellerService;
 
 public class SellerListController implements Initializable, DataChangeListernet {
@@ -48,6 +51,9 @@ public class SellerListController implements Initializable, DataChangeListernet 
 	
 	@FXML
 	private TableColumn<Seller, String> tableColumnEmail;
+	
+	@FXML
+	private ComboBox<Department> comboBoxDepartment;
 	
 	@FXML
 	private TableColumn<Seller, Date> tableColumnBirthDate;
@@ -116,7 +122,8 @@ public class SellerListController implements Initializable, DataChangeListernet 
 
 			SellerFormController controller = loader.getController();
 			controller.setSeller(obj);
-			controller.setSellerService(new SellerService());
+			controller.setServices(new SellerService(), new DepartmentService());
+			controller.loadAssociatedObjects();
 			controller.subscribeDataChangeListener(this);
 			controller.updateFormData();
 
@@ -129,6 +136,7 @@ public class SellerListController implements Initializable, DataChangeListernet 
 			dialogStage.showAndWait();
 
 		} catch (IOException e) {
+			e.printStackTrace();
 			Alerts.showAlert("IO Exception", "Error loading view", e.getMessage(), AlertType.ERROR);
 		}
 	}

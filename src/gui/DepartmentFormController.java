@@ -115,6 +115,7 @@ public class DepartmentFormController implements Initializable {
 	
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
+		initializeNodes();
 	}
 	
 	private void initializeNodes() {
