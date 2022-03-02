@@ -33,10 +33,12 @@
             <Label text="Id" />
             <Label text="Name" GridPane.rowIndex="1" />
             <Label text="Email" GridPane.rowIndex="2" />
-            <DatePicker fx:id="dpBirthDate" prefHeight="24.0" prefWidth="247.0" />
             <Label text="Base Salary" GridPane.rowIndex="4" />
             <Label text="Department" GridPane.rowIndex="5" />
-            <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <children>
+                  <DatePicker fx:id="dpBirthDate" prefHeight="29.0" prefWidth="247.0" />
+               </children></HBox>
             <TextField fx:id="txtId" editable="false" GridPane.columnIndex="1" />
             <TextField fx:id="txtName" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label fx:id="labelErrorName" textFill="RED" GridPane.columnIndex="2" GridPane.rowIndex="1" />
